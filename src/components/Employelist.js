@@ -31,15 +31,10 @@ function EmployeList(props) {
     axios
       .delete ("http://localhost:1200/user/delete/"+id)
       .then((result) => {
-        props.history.push("/user/getallusers");
+        props.history.push("/Createemployee");
       });
   };
-  const editemployee = (id) => {
-    console.log(id);
-    props.history.push({
-      pathname: "/Editemployee" + id,
-    });
-  };
+  
 
   return (
     <div className="animated fadeIn">
@@ -72,23 +67,14 @@ function EmployeList(props) {
                               className="btn btn-warning"
 
                               onClick={() => {
-                                console.log(item.id);
                                 let b = item.id;
-                                console.log(b);
-                                editemployee(b);
+                                deleteeployee(b);
                               }}
                             >
-                              Edit
-                            </button>
-                            <a
-                              className="btn btn-warning"
-                              href="/Editemployee"
-                              // onClick={() => {
-                              //   let b = item.id;
-                              //   deleteeployee(b);
-                              // }}
-                            >
                               Delete
+                            </button>
+                            <a className="btn btn-warning" href="/Editemployee">
+                              Edit
                             </a>
                           </div>
                         </td>

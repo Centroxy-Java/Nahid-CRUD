@@ -36,7 +36,7 @@ function Editemployee(props) {
       salary: employee.salary,
     };
     axios.post("http://localhost:1200/user/add", data).then((result) => {
-      props.history.push("/user/getallusers");
+      props.history.push("/Employelist");
     });
   };
   const onChange = (e) => {
