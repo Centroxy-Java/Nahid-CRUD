@@ -27,14 +27,15 @@ function EmployeList(props) {
     GetData();
   }, []);
   const deleteeployee = (id) => {
-      
+      console.log(id);
     axios
-      .delete ("http://localhost:1200/user/delete?id=" + id)
+      .delete ("http://localhost:1200/user/delete/"+id)
       .then((result) => {
         props.history.push("/user/getallusers");
       });
   };
   const editemployee = (id) => {
+    console.log(id);
     props.history.push({
       pathname: "/Editemployee" + id,
     });
@@ -67,21 +68,28 @@ function EmployeList(props) {
                         <td>
                           <div class="btn-group">
                             <button
+                              value={item.id}
                               className="btn btn-warning"
+
                               onClick={() => {
-                                editemployee(item.Id);
+                                console.log(item.id);
+                                let b = item.id;
+                                console.log(b);
+                                editemployee(b);
                               }}
                             >
                               Edit
                             </button>
-                            <button
+                            <a
                               className="btn btn-warning"
-                              onClick={() => {
-                                deleteeployee(item.Id);
-                              }}
+                              href="/Editemployee"
+                              // onClick={() => {
+                              //   let b = item.id;
+                              //   deleteeployee(b);
+                              // }}
                             >
                               Delete
-                            </button>
+                            </a>
                           </div>
                         </td>
                       </tr>
